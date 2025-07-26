@@ -1,4 +1,4 @@
-package com.example.whik.entity;
+package com.example.whik;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
