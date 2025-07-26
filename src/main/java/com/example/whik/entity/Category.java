@@ -1,4 +1,4 @@
-package com.example.whik;
+package com.example.whik.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

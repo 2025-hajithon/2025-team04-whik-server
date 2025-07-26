@@ -1,4 +1,4 @@
-package com.example.whik;
+package com.example.whik.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,43 +18,28 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Review {
+public class MemberCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "review_id")
+	@Column(name = "member_category_id")
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
 	private Member member;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "destination_id")
-	private Destination destination;
-
 	@Enumerated(EnumType.STRING)
 	private Category category;
 
-	private String content;
-
-	private Double rating;
-
 	@Builder(access = AccessLevel.PRIVATE)
-	private Review(Member member, Destination destination, Category category, String content, Double rating) {
+	private MemberCategory(Member member, Category category) {
 		this.member = member;
-		this.destination = destination;
 		this.category = category;
-		this.content = content;
-		this.rating = rating;
 	}
 
-	public static Review create(Member member, Destination destination, Category category, String content, Double rating) {
-		return Review.builder()
+	public static MemberCategory create(Member member, Category category) {
+		return MemberCategory.builder()
 				.member(member)
-				.destination(destination)
-				.category(category)
-				.content(content)
-				.rating(rating)
-				.build();
+				.category(category).build();
 	}
 }

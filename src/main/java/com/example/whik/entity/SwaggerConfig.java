@@ -1,4 +1,4 @@
-package com.example.whik;
+package com.example.whik.entity;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
