@@ -18,10 +18,10 @@ public class WishlistController {
     private final WishlistService wishlistService;
 
     @PostMapping
-    public ResponseEntity<Void> saveDestination(
+    public ResponseEntity<Void> createWishlist(
             @RequestBody WishlistRequest request
     ) {
-        wishlistService.saveDestination(request.memberId(), request.destinationId());
+        wishlistService.createWishlist(request.memberId(), request.destinationId());
         return ResponseEntity.ok().build();
     }
 }

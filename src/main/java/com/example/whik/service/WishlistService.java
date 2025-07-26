@@ -20,7 +20,7 @@ public class WishlistService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public void saveDestination(UUID memberId, Long destinationId) {
+    public void createWishlist(UUID memberId, Long destinationId) {
 
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("member not found"));
