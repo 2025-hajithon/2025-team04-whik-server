@@ -1,5 +1,6 @@
 package com.example.whik;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "destination_id")
     private Long id;
 
     private String name;
