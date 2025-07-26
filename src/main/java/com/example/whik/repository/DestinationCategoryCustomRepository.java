@@ -9,4 +9,8 @@ public interface DestinationCategoryCustomRepository {
 	DestinationCategory findAllByCategories(List<Category> categories);
 
 	DestinationCategory findUnfamiliarByCategories(List<Category> categories);
+
+	long countFamiliarCategories(List<Category> categories);
+
+	long countUnfamiliarCategories(List<Category> categories);
 }

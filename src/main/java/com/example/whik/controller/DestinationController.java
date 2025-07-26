@@ -1,6 +1,7 @@
 package com.example.whik.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,5 +33,12 @@ public class DestinationController {
 	public ResponseEntity<List<DestinationResponse>> searchDestinations(@RequestParam(name = "destination") String destination) {
 		List<DestinationResponse> response = destinationService.searchDestinations(destination);
 		return ResponseEntity.ok(response);
+	}
+
+	@GetMapping("/{destinationId}/probability")
+	public ResponseEntity<Double> getProbability(@RequestParam(name = "destinationId") Long destinationId, @RequestBody
+		UUID memberId) {
+		Double probability = destinationService.getProbability(destinationId, memberId);
+		return ResponseEntity.ok(probability);
 	}
 }

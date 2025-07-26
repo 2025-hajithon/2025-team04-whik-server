@@ -30,4 +30,20 @@ public class DestinationCategoryCustomRepositoryImpl implements DestinationCateg
 			.where(destinationCategory.category.notIn(categories)			)
 			.fetchFirst();
 	}
+
+	@Override
+	public long countFamiliarCategories(List<Category> categories) {
+		return queryFactory
+			.select(destinationCategory.count()).from(destinationCategory)
+			.where(destinationCategory.category.in(categories))
+			.fetchFirst();
+	}
+
+	@Override
+	public long countUnfamiliarCategories(List<Category> categories) {
+		return queryFactory
+			.select(destinationCategory.count()).from(destinationCategory)
+			.where(destinationCategory.category.notIn(categories))
+			.fetchFirst();
+	}
 }
