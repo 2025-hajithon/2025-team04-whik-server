@@ -9,6 +9,7 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
     @Id
+    @Column(name = "member_id")
     private final UUID id = UUID.randomUUID();
 
     @Column(unique = true) // unique 조건 추가
