@@ -1,5 +1,6 @@
 package com.example.whik.service;
 
+import com.example.whik.dto.WishlistResponse;
 import com.example.whik.entity.Destination;
 import com.example.whik.entity.Member;
 import com.example.whik.entity.Wishlist;
@@ -10,6 +11,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -30,5 +32,12 @@ public class WishlistService {
 
         Wishlist wishlist = Wishlist.create(member, destination);
         wishlistRepository.save(wishlist);
+    }
+
+    @Transactional
+    public List<WishlistResponse> findAllByMemberId(UUID memberId) {
+        List<Wishlist> wishlists = wishlistRepository.findAllByMemberId(memberId);
+
+
     }
 }
