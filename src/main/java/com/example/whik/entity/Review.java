@@ -1,6 +1,9 @@
-package com.example.whik;
+package com.example.whik.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,10 +18,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Wishlist {
-
+public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "review_id")
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -29,15 +32,29 @@ public class Wishlist {
 	@JoinColumn(name = "destination_id")
 	private Destination destination;
 
+	@Enumerated(EnumType.STRING)
+	private Category category;
+
+	private String content;
+
+	private Double rating;
+
 	@Builder(access = AccessLevel.PRIVATE)
-	private Wishlist(Member member, Destination destination) {
+	private Review(Member member, Destination destination, Category category, String content, Double rating) {
 		this.member = member;
 		this.destination = destination;
+		this.category = category;
+		this.content = content;
+		this.rating = rating;
 	}
 
-	public static Wishlist create(Member member, Destination destination) {
-		return Wishlist.builder()
+	public static Review create(Member member, Destination destination, Category category, String content, Double rating) {
+		return Review.builder()
 				.member(member)
-				.destination(destination).build();
+				.destination(destination)
+				.category(category)
+				.content(content)
+				.rating(rating)
+				.build();
 	}
 }
