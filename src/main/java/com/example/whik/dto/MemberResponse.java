@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public record MemberResponse(UUID memberId) {
 
-    public static MemberResponse of(String nickname) {
-        return new MemberResponse(UUID.randomUUID());
+    public static MemberResponse of(UUID memberId) {
+        return new MemberResponse(memberId);
     }
 }
